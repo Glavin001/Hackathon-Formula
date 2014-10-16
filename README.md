@@ -1,4 +1,4 @@
-Firstly, thanks for checking this out. 
+Firstly, thanks for checking this out; please visit hackathonformula.me for a live version of the application. 
 
 <h1>Getting Started</h1>
 
