@@ -1,0 +1,43 @@
+import numpy as np
+from sklearn.feature_extraction import DictVectorizer
+
+
+data = np.loadtxt("d.csv",skiprows=1, dtype=object, delimiter=",")
+
+hacks = []
+lengtsh = []
+for hack in data:
+	if len(hack)==7:
+		hacks.append(list(hack))
+
+
+data = np.vstack(hacks)
+print data.shape
+
+############ PRE PROCESSING BEGINS #########################
+
+# Winner or not
+data[:,0] = map(lambda x: x=="False",data[:,0])
+
+# Title of hack
+data[:,1] = map(lambda x: len(x),data[:,1])
+
+print data[1]
+
+# Skip tag-line: 2, it contains same info as description and wastes computation
+
+# Description
+dv = DictVectorizer()
+data[:,2] = map(lambda x: len(x),data[:,2])
+data[3:] =[]
+
+y = data[:,0]
+x = data[:,1:]
+
+from sklearn.cross_validation import cross_val_score
+from sklearn.naive_bayes import MultinomialNB
+
+nb = MultinomialNB()
+print cross_val_score(nb, x,y, cv=10)
+
+

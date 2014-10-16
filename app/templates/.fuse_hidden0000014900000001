@@ -1,0 +1,144 @@
+<style>
+  #typed-cursor {
+    font-weight: 100;
+    font-size: 45px;
+  color: #34495e;
+  font-weight: 100;
+  }
+
+#typed-cursor.blinking {
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+  from,to {
+  color: transparent;
+}
+ 50% {
+    color: #34495e;
+ }
+
+}
+
+@-moz-keyframes blink {
+  from,to {
+  color: transparent;
+}
+ 50% {
+   color: #34495e;
+ }
+
+}
+
+@-webkit-keyframes "blink" {
+  from,to {
+  color: transparent;
+}
+ 50% {
+   color: #34495e;
+ }
+
+}
+
+@-ms-keyframes "blink" {
+  from,to {
+  color: transparent;
+}
+ 50% {
+   color: black;
+ }
+
+}
+
+@-o-keyframes "blink" {
+  from,to {
+  color: transparent;
+}
+ 50% {
+   color: black;
+ }
+}
+</style>
+
+<div class="col-lg-8 content">
+  <div class="bs-example">
+          <div class="box">
+            <div class="box-header">
+              <h2>We predict that your hack will perform <div style="border-bottom: 7px solid; display:inline">well</div>.</h2>
+            </div>
+            <div id="report" class="box-content" style="display:none">
+            <div class="row">
+              <div class="col-lg-4 content">
+              <h3 style="font-size:25px;">Potential Success</h3>
+              <input type="text" data-readOnly=true data-fgColor="#1abc9c" value="75" class="dial">
+              <br>
+              Percent chance that you will win
+              </div>
+              <div class="col-lg-4 content">
+              <h3 style="font-size:25px;"> Social Interest</h3>
+              <input type="text" data-readOnly=true data-fgColor="#1abc9c" value="75" class="dial">
+              <br>
+              </div>
+              <div class="col-lg-4 content">
+              <h3 style="font-size:25px;">Idea Originality</h3>
+              <input type="text" data-readOnly=true data-fgColor="#1abc9c" value="75" class="dial">
+              <br>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            </div>  
+            <script type="text/javascript">
+            $(function() {
+                $("#report").fadeIn(800);
+                $(".dial").knob();
+                $('.knob').animate({value: 100});
+
+            });
+            </script>
+          </div>
+
+
+
+        <h3 style="background-color:#eff0f2">>> Be a social hacker and share this around!<span id="typed-cursor" class="blinking">|</span></h3>
+        <div class="row" style="padding-left:100px">
+          <div class="col-xs-2">
+            <a id="fb-share" style='text-decoration:none;' type="icon_link" onClick="window.open('http://www.facebook.com/sharer.php?s=100&p[title]=Hackathon Formula&p[summary]=Check out the Hackathon Formula&p[url]=107.170.73.229:5000','sharer','toolbar=0,status=0,width=580,height=325');" href="javascript: void(0)"><img src="{{ url_for('static', filename='fb.png') }}"></a> 
+          </div> <!-- /.col-xs-3 -->
+          <div class="col-xs-2">
+            <a id="tt-share" style='text-decoration:none;' type="icon_link" onClick="window.open('https://twitter.com/intent/tweet?text=Check out the Hackathon Formula! 107.170.73.229:5000','sharer','toolbar=0,status=0,width=580,height=325');" href="javascript: void(0)"><img src="{{ url_for('static', filename='tt.png') }}"> 
+          </div> <!-- /.col-xs-3 -->
+          <div class="col-xs-2">
+            <a id="tt-share" style='text-decoration:none;' type="icon_link" onClick="window.open('https://plus.google.com/share?url=Check out the Hackathon Formula Here:  107.170.73.229:5000','sharer','toolbar=0,status=0,width=580,height=325');" href="javascript: void(0)"><img src="{{ url_for('static', filename='g.png') }}">
+            </a>          
+          </div> <!-- /.col-xs-3 -->
+          <div class="col-xs-2">
+            <a id="gh-share" style='text-decoration:none;' type="icon_link" onClick="window.open('http://github.com/kallada/hackathon-formula/');" href="javascript: void(0)"><img src="{{ url_for('static', filename='gh.png') }}">
+            </a>          
+          </div>
+          <div class="col-lg-2">
+            <form action="/index/" type="post">
+              <button id="analyze" type="submit" style="height:60px" class="btn btn-primary btn-lg" href="/index/">Submit new hack</button>
+            </form>
+          </div>
+        </div>
+  </div>
+  </div>
+
+ <div class="col-lg-3 content">
+          <div class="tile">
+            <span class="glyphicon glyphicon-globe" style="font-size:120px" ></span>
+            <h3 class="tile-title">Your hack was compared with past winning hack trends on <u>ChallengePost.com</u></h3>
+            <p>Have another idea? Submit another hack</p>
+          </div>
+          <div class="tile">
+            <span class="glyphicon glyphicon-align-left" style="font-size:70px" ></span>
+            <h3 class="tile-title">How were these metrics computed?</h3>
+            <p style="line-height:1.32222">Three separate learning models were carefully built with learning algorithms including Naive Bayes, Nearest Neighbors Search and Decision Trees.</p>
+          </div>
+
+</div> 
+<script src="{{ url_for('static', filename='jquery.knob.min.js') }}"/>

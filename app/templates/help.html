@@ -1,0 +1,116 @@
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>fullPage.js A simple Demo</title>
+  <meta name="author" content="Alvaro Trigo Lopez" />
+  <meta name="description" content="fullPage very simple demo." />
+  <meta name="keywords"  content="fullpage,jquery,demo,simple" />
+  <meta name="Resource-type" content="Document" />
+
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='jquery.fullPage.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='example.css') }}" />
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+  <script src="{{ url_for('static', filename='jquery.typer.js') }}"></script>
+
+  <script type="text/javascript" src="{{ url_for('static', filename='jquery.fullPage.js') }}"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $.typer.options.typeSpeed = 30;
+      $.typer.options.clearDelay = 20;
+      $.typer.options.highlightSpeed = 10;
+      $('#fullpage').fullpage({
+      });
+      $('[data-typer-targets]').typer();
+
+    });
+  </script>
+
+</head>
+<body>
+
+<div id="fullpage">
+  <center>
+  <div class="section active" id="section0">
+  <span>
+    <h1>Why do we come to hackathons?</h1>
+    <h3 style="font-size:13px">(scroll down; this is a slideshow)</h3>
+</div>
+    </span>
+  <div class="section" id="section1">
+      <span class="glyphicon glyphicon-question-sign" style="font-size:90px"></span>
+      <h1>What should we make?</h1>
+      <h3 style="color:gray; font-size: 25px;position:relative" data-typer-targets="a biometric authentication tool,a universal speech translator for all mammals, a health-care application helping patients with alzhiemers, a application that helps the needy, an app using the twilio api, an expedia for dogs">a health-care application</h3>
+  </div>
+  <div class="section" id="section2">
+            <div class="row">
+      <br><br>
+      <h1>By scraping through ChallengePost.com...</h1>
+      <hr>
+      <div id="scrape-challenge">
+        <div class="col-lg-5">
+          <br><br>
+          <code style="font-size:25px">
+          for <b>hack</b> in <b>ChallengePost</b>:<br>
+              <b>Analyze!</b>();
+        </code>
+        </div>
+        <div class="col-lg-3" id="slideshow">
+
+          <img id="sc1" src="{{ url_for('static', filename='sc1.png') }}">
+          <img id="sc2" src="{{ url_for('static', filename='sc2.png') }}">
+          <img id="sc3" src="{{ url_for('static', filename='sc3.png') }}">
+          <img id="sc4" src="{{ url_for('static', filename='sc4.png') }}">
+          <img id="sc5" src="{{ url_for('static', filename='sc5.png') }}">
+          <img id="sc6" src="{{ url_for('static', filename='sc6.png') }}">
+        </div>
+        
+      </div>
+      </div>
+            <div class="row">
+
+      <div class="row">
+      <h3 style="color:gray; font-size: 25px">..and analyzing patterns over winning and losing hacks</h3>
+      </div>
+  </div>
+  </div>
+  <div class="section" id="section3">
+      <h1>The <b>Hackathon Formula</b> was born</h1>
+      <img id="sc1" src="{{ url_for('static', filename='hack_describe.png') }}">        
+      <h3 style="color:gray; font-size: 35px">Let's first evaluate our ideas <u>statistically</u></h3>
+
+<a href="/"><button id="analyze" type="button" style="height:60px" class="btn btn-primary btn-lg" href="/index">Submit a hack now</button></a>
+
+  </div>
+
+  </center>
+</div>
+
+<script>
+cur = 1;
+setInterval(function(){
+  $("#sc"+cur).show();
+  for (var i = 1; i <= 6; i++) {
+    if (i!=cur){
+      $("#sc"+i).hide();
+    }
+  };
+
+  cur+=1;
+  if (cur>=7){
+    cur=1;
+  }
+},150);
+</script>
+<style type="text/css">
+  #slideshow img {
+    display: none;
+    width: 120%;
+    height: 120%;
+}
+
+
+</style>
+</body>
